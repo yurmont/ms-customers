@@ -1,0 +1,9 @@
+version: '3'
+services:
+  customers:
+    image: "ms-customers"
+    build:
+      context: ../../../
+      dockerfile: ./src/main/docker/Dockerfile
+    ports:
+      - 8080:8080
