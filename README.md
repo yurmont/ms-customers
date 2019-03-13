@@ -8,7 +8,6 @@ These instructions will get you a copy of the project up and running on your
 local machine for development and testing purposes. See deployment for notes on
 how to deploy the project on a live system.
 
-- Environment variable "SPRING_PROFILES_ACTIVE" (dev/qa/prd)
 
 ## Prerequisites
 
@@ -67,25 +66,6 @@ docker-compose -f */src/main/docker/docker-compose.yml up
 ```
 mvn compile depgraph:graph depgraph:aggregate # Modules dependency graph
 ```
-
-### Generate container mysql
-```
-docker run -p 3306:3306 --name fcdb -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=fcdb -d mysql:5.5
-```
-
-## Generate JKS Java KeyStore File
-
-```
-keytool -genkeypair -alias mytest 
-                    -keyalg RSA 
-                    -keypass mypass 
-                    -keystore mytest.jks 
-                    -storepass mypass
-```
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the tags on this repository.
 
 ## License
 
