@@ -3,7 +3,8 @@
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your
-local machine for development and testing purposes.
+local machine for development and testing purposes. 
+Controllers, services and repositories have unit tests with 90% of test coverage.
 
 ## Prerequisites
 
@@ -55,6 +56,12 @@ java -jar *-app/target/customs-app-*-SNAPSHOT.jar
 
 ```
 docker-compose -f */src/main/docker/docker-compose.yml up
+```
+
+### Deployment
+
+```
+mvn azure-webapp:deploy
 ```
 
 ## License
