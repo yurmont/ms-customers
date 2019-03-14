@@ -6,7 +6,6 @@ import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 import org.springframework.stereotype.Repository;
 
 import customers.domain.Customer;
-import customers.repository.CustomerRepository;
 import customers.repository.mapper.CustomerRowMapper;
 import customers.repository.utils.SimpleJdbcCallFactory;
 
@@ -27,14 +26,15 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 	public Integer insert(Customer customer) {
 		SimpleJdbcCall jdbcCall = simpleJdbcCallFactory.create(jdbcTemplate, "customer_insert");
 
-		Map<String, Object> parameters = new HashMap<String, Object>(16);
+		Map<String, Object> parameters = new HashMap<String, Object>(4);
+		parameters.put("p_customer_id", 0);
 		parameters.put("p_name", customer.getName());
 		parameters.put("p_last_name", customer.getLastName());
 		parameters.put("p_birth_date", customer.getBirthDate());
 
 		Map<String, Object> simpleJdbcCallResult = jdbcCall.execute(parameters);
 
-		return (int) simpleJdbcCallResult.get("p_customer_id");
+		return (Integer) simpleJdbcCallResult.get("p_customer_id");
 	}
 
 	@SuppressWarnings("unchecked")

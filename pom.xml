@@ -126,15 +126,14 @@
 									<limit>
 										<counter>LINE</counter>
 										<value>COVEREDRATIO</value>
-										<minimum>80%</minimum>
+										<minimum>90%</minimum>
 									</limit>
 								</limits>
 							</rule>
 						</rules>
 					</rules>
 					<excludes>
-				        <exclude>**/customers/config/*</exclude>				        
-				        <exclude>**/customers/proxy/*</exclude>
+				        <exclude>**/customers/config/*</exclude>	
 				        <exclude>**/customers/dto/*</exclude>
 				    </excludes>
 				</configuration>

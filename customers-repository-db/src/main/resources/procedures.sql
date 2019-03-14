@@ -15,9 +15,8 @@ BEGIN
 	)
 	VALUES(
 		p_name ,
-		last_name ,
-		birth_date ,
-		p_document);	
+		p_last_name ,
+		p_birth_date);	
 		
 	SET p_customer_id = LAST_INSERT_ID();
 	    	 

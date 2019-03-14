@@ -27,7 +27,7 @@ public class CustomerServiceImpl implements CustomerService {
 	public Integer create(CustomerCreateRequest request) {
 		Customer customer = new Customer();
 		customer.setName(request.getName());
-		customer.setName(request.getLastName());
+		customer.setLastName(request.getLastName());
 		customer.setBirthDate(request.getBirthDate());
 
 		return customerRepository.insert(customer);

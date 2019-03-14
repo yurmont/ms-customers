@@ -3,18 +3,11 @@ package customers.dto;
 import java.util.Date;
 
 public class CustomerCreateRequest  {
-
-	private int customerId;
+	
 	private String name;
 	private String lastName;	
-	private Date birthDate;	
+	private Date birthDate;
 	
-	public int getCustomerId() {
-		return customerId;
-	}
-	public void setCustomerId(int customerId) {
-		this.customerId = customerId;
-	}
 	public String getName() {
 		return name;
 	}

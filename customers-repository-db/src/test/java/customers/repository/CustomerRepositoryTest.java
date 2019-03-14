@@ -68,7 +68,7 @@ public class CustomerRepositoryTest {
 		ArgumentCaptor<HashMap> argument = ArgumentCaptor.forClass(HashMap.class);
 		verify(mockedJdbcCall, times(1)).execute(argument.capture());
 
-		assertEquals(3, argument.getValue().values().size());
+		assertEquals(4, argument.getValue().values().size());		
 		assertEquals(customer.getName(), argument.getValue().get("p_name"));
 		assertEquals(customer.getLastName(), argument.getValue().get("p_last_name"));
 		assertEquals(customer.getBirthDate(), argument.getValue().get("p_birth_date"));
