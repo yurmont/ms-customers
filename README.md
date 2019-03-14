@@ -1,6 +1,4 @@
-# Microservice
-
-Customers
+# Customers Microservice
 
 ## Getting Started
 
