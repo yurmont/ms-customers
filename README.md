@@ -61,12 +61,6 @@ java -jar *-app/target/customs-app-*-SNAPSHOT.jar
 docker-compose -f */src/main/docker/docker-compose.yml up
 ```
 
-### Documentation
-
-```
-mvn compile depgraph:graph depgraph:aggregate # Modules dependency graph
-```
-
 ## License
 
 Copyright @Yurmont All Rights Reserved - Proprietary and confidential
