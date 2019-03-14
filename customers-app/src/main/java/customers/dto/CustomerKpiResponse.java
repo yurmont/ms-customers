@@ -1,6 +1,6 @@
 package customers.dto;
 
-public class CustomerKpiDto  {
+public class CustomerKpiResponse  {
 
 	private double ageAverage;
 	private double standardDeviation;

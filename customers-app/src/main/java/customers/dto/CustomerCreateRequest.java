@@ -1,8 +1,8 @@
-package customers.domain;
+package customers.dto;
 
 import java.util.Date;
 
-public class Customer {
+public class CustomerCreateRequest  {
 
 	private int customerId;
 	private String name;
@@ -32,5 +32,6 @@ public class Customer {
 	}
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
-	}			
+	}		
+	
 }

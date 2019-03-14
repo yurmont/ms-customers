@@ -24,7 +24,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 	SimpleJdbcCallFactory simpleJdbcCallFactory;
 
 	@Override
-	public void insert(Customer customer) {
+	public Integer insert(Customer customer) {
 		SimpleJdbcCall jdbcCall = simpleJdbcCallFactory.create(jdbcTemplate, "customer_insert");
 
 		Map<String, Object> parameters = new HashMap<String, Object>(16);
@@ -32,7 +32,9 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 		parameters.put("p_last_name", customer.getLastName());
 		parameters.put("p_birth_date", customer.getBirthDate());
 
-		jdbcCall.execute(parameters);
+		Map<String, Object> simpleJdbcCallResult = jdbcCall.execute(parameters);
+
+		return (int) simpleJdbcCallResult.get("p_customer_id");
 	}
 
 	@SuppressWarnings("unchecked")

@@ -2,6 +2,7 @@ DROP procedure IF EXISTS `customer_insert`;
 //
 DELIMITER //
 CREATE PROCEDURE customer_insert(
+OUT p_customer_id INT ,
 IN p_name varchar(30), 
 IN p_last_name varchar(30),
 IN p_birth_date datetime
@@ -16,7 +17,10 @@ BEGIN
 		p_name ,
 		last_name ,
 		birth_date ,
-		p_document);	 	 
+		p_document);	
+		
+	SET p_customer_id = LAST_INSERT_ID();
+	    	 
 END;
 //
 DROP procedure IF EXISTS `customer_find_all`;

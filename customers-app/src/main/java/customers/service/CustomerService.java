@@ -2,15 +2,15 @@ package customers.service;
 
 import java.util.List;
 
-import customers.dto.CustomerDto;
-import customers.dto.CustomerKpiDto;
+import customers.dto.CustomerResponse;
+import customers.dto.CustomerKpiResponse;
+import customers.dto.CustomerCreateRequest;
 
 public interface CustomerService {
 	
-	void insert(CustomerDto customer);
+	Integer create(CustomerCreateRequest request);
 	
-	CustomerKpiDto getCustomerKpi();
+	CustomerKpiResponse getKpi();
 	
-    List<CustomerDto> findAll();
-
+    List<CustomerResponse> findAll();
 }

@@ -2,7 +2,7 @@ package customers.dto;
 
 import java.util.Date;
 
-public class CustomerDto  {
+public class CustomerResponse  {
 
 	private int customerId;
 	private String name;

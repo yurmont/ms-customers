@@ -57,8 +57,12 @@ public class CustomerRepositoryTest {
 		SimpleJdbcCall mockedJdbcCall = Mockito.mock(SimpleJdbcCall.class);
 		when(simpleJdbcCallFactory.create(jdbcTemplate, "customer_insert")).thenReturn(mockedJdbcCall);
 		
+		Map<String, Object> maps = new HashMap<String, Object>();
+		maps.put("p_customer_id", 100);
+		when(mockedJdbcCall.execute(any(HashMap.class))).thenReturn(maps);
+		
 		// Act
-		customerRepositoryImpl.insert(customer);
+		int actual = customerRepositoryImpl.insert(customer);
 		
 		// Assert
 		ArgumentCaptor<HashMap> argument = ArgumentCaptor.forClass(HashMap.class);
@@ -68,6 +72,7 @@ public class CustomerRepositoryTest {
 		assertEquals(customer.getName(), argument.getValue().get("p_name"));
 		assertEquals(customer.getLastName(), argument.getValue().get("p_last_name"));
 		assertEquals(customer.getBirthDate(), argument.getValue().get("p_birth_date"));
+		assertEquals(100, actual);
 	}
 	
 	@Test

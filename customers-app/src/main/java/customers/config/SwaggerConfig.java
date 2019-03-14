@@ -9,6 +9,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.google.common.base.Predicates;
+
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.ResponseMessageBuilder;
@@ -51,7 +53,8 @@ public class SwaggerConfig {
 				unauthorizedRequestResponseMessage, forbiddenResponseMessage, notFoundResponseMessage,
 				internalErrorResponseMessage);
 
-		return new Docket(DocumentationType.SWAGGER_2).select().paths(PathSelectors.any()).build()
+		return new Docket(DocumentationType.SWAGGER_2).select().paths(PathSelectors.any())
+				.paths(Predicates.not(PathSelectors.regex("/error.*"))).build()
 				.directModelSubstitute(LocalDate.class, String.class).genericModelSubstitutes(ResponseEntity.class)
 				.apiInfo(apiInfo())				
 				.globalResponseMessage(RequestMethod.GET, getGlobalResponses)

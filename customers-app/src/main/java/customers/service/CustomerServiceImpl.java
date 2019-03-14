@@ -6,8 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import customers.domain.Customer;
-import customers.dto.CustomerDto;
-import customers.dto.CustomerKpiDto;
+import customers.dto.CustomerResponse;
+import customers.dto.CustomerKpiResponse;
+import customers.dto.CustomerCreateRequest;
 import customers.repository.CustomerRepository;
 
 import java.util.ArrayList;
@@ -18,28 +19,28 @@ import java.util.List;
 public class CustomerServiceImpl implements CustomerService {
 
 	static final int LIFE_EXPECTANCY_IN_YEARS = 75;
-	
+
 	@Autowired
 	public CustomerRepository customerRepository;
 
 	@Override
-	public void insert(CustomerDto customerDto) {
+	public Integer create(CustomerCreateRequest request) {
 		Customer customer = new Customer();
-		customer.setName(customerDto.getName());
-		customer.setName(customerDto.getLastName());
-		customer.setBirthDate(customerDto.getBirthDate());
+		customer.setName(request.getName());
+		customer.setName(request.getLastName());
+		customer.setBirthDate(request.getBirthDate());
 
-		customerRepository.insert(customer);
+		return customerRepository.insert(customer);
 	}
 
 	@Override
-	public CustomerKpiDto getCustomerKpi() {
+	public CustomerKpiResponse getKpi() {
 
-		List<CustomerDto> customerDtos = findAll();
-		CustomerKpiDto customerKpi = new CustomerKpiDto();
+		List<CustomerResponse> customerResponseDtos = findAll();
+		CustomerKpiResponse customerKpi = new CustomerKpiResponse();
 
-		double ageAverage = calculateAgeAverage(customerDtos);
-		double standardDeviation = calculateStandardDeviation(customerDtos, ageAverage);
+		double ageAverage = calculateAgeAverage(customerResponseDtos);
+		double standardDeviation = calculateStandardDeviation(customerResponseDtos, ageAverage);
 
 		customerKpi.setAgeAverage(ageAverage);
 		customerKpi.setStandardDeviation(standardDeviation);
@@ -48,13 +49,13 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public List<CustomerDto> findAll() {
+	public List<CustomerResponse> findAll() {
 
 		List<Customer> customers = customerRepository.findAll();
-		List<CustomerDto> customerDtos = new ArrayList<CustomerDto>();
+		List<CustomerResponse> customerResponseDtos = new ArrayList<CustomerResponse>();
 
 		for (Customer customer : customers) {
-			CustomerDto customerDto = new CustomerDto();
+			CustomerResponse customerDto = new CustomerResponse();
 			customerDto.setCustomerId(customer.getCustomerId());
 			customerDto.setName(customer.getName());
 			customerDto.setLastName(customer.getLastName());
@@ -62,10 +63,10 @@ public class CustomerServiceImpl implements CustomerService {
 			customerDto.setAge(calculateCustomerAge(customer.getBirthDate()));
 			customerDto.setEstimatedDeathDate(calculateEstimatedDeathDate(customer.getBirthDate()));
 
-			customerDtos.add(customerDto);
+			customerResponseDtos.add(customerDto);
 		}
 
-		return customerDtos;
+		return customerResponseDtos;
 	}
 
 	private int calculateCustomerAge(Date birthDate) {
@@ -80,19 +81,19 @@ public class CustomerServiceImpl implements CustomerService {
 		return estimatedDeathDatetime.toDate();
 	}
 
-	private double calculateStandardDeviation(List<CustomerDto> customerDtos, double ageAverage) {
+	private double calculateStandardDeviation(List<CustomerResponse> customerDtos, double ageAverage) {
 		double standardDeviation = 0.0;
 
-		for (CustomerDto customerDto : customerDtos) {
+		for (CustomerResponse customerDto : customerDtos) {
 			standardDeviation += Math.pow(customerDto.getAge() - ageAverage, 2);
 		}
-		return standardDeviation;
+		return Math.sqrt(standardDeviation / (customerDtos.size() - 1));
 	}
 
-	private double calculateAgeAverage(List<CustomerDto> customerDtos) {
+	private double calculateAgeAverage(List<CustomerResponse> customerDtos) {
 		double ageSum = customerDtos.stream().mapToDouble(a -> a.getAge()).sum();
 		double ageAverage = ageSum / customerDtos.size();
-		
+
 		return ageAverage;
 	}
 }
