@@ -6,6 +6,8 @@ import customers.domain.Customer;
 
 public interface CustomerRepository {
 	
-	List<Customer> search();
+	void insert(Customer customer);
+	
+	List<Customer> findAll();	
 
 }

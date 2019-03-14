@@ -2,10 +2,15 @@ package customers.service;
 
 import java.util.List;
 
-import customers.domain.Customer;
+import customers.dto.CustomerDto;
+import customers.dto.CustomerKpiDto;
 
 public interface CustomerService {
 	
-    List<Customer> search() throws Exception;
+	void insert(CustomerDto customer);
+	
+	CustomerKpiDto getCustomerKpi();
+	
+    List<CustomerDto> findAll();
 
 }

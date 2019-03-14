@@ -4,132 +4,48 @@ import java.util.Date;
 
 public class CustomerDto  {
 
-	private String companyId;
-	private String ruc;
-	private String documentId;
-	private String documentReference;
-	private String logisticCenterId;
-	private String logisticCenterDescription;
-	private String materialId;
-	private String materialDescription;	
-	private Date issueDate;
-	private Date expirationDate;
-	private String currencyId;
-	private String currencyDescription;	
-	private double amount;
-	private double amountToPay;
-	private String documentClass;
-	private int fiscalYear;
-	private String positionSap;
-	private String segment;
+	private int customerId;
+	private String name;
+	private String lastName;	
+	private Date birthDate;
+	private int age;
+	private Date estimatedDeathDate;
 	
-	public String getCompanyId() {
-		return companyId;
+	public int getCustomerId() {
+		return customerId;
 	}
-	public void setCompanyId(String companyId) {
-		this.companyId = companyId;
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
 	}
-	public String getRuc() {
-		return ruc;
+	public String getName() {
+		return name;
 	}
-	public void setRuc(String ruc) {
-		this.ruc = ruc;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getDocumentId() {
-		return documentId;
+	public String getLastName() {
+		return lastName;
 	}
-	public void setDocumentId(String documentId) {
-		this.documentId = documentId;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
-	public String getDocumentReference() {
-		return documentReference;
+	public Date getBirthDate() {
+		return birthDate;
 	}
-	public void setDocumentReference(String documentReference) {
-		this.documentReference = documentReference;
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
 	}
-	public String getLogisticCenterId() {
-		return logisticCenterId;
+	public int getAge() {
+		return age;
 	}
-	public void setLogisticCenterId(String logisticCenterId) {
-		this.logisticCenterId = logisticCenterId;
+	public void setAge(int age) {
+		this.age = age;
 	}
-	public String getLogisticCenterDescription() {
-		return logisticCenterDescription;
+	public Date getEstimatedDeathDate() {
+		return estimatedDeathDate;
 	}
-	public void setLogisticCenterDescription(String logisticCenterDescription) {
-		this.logisticCenterDescription = logisticCenterDescription;
-	}
-	public String getMaterialId() {
-		return materialId;
-	}
-	public void setMaterialId(String materialId) {
-		this.materialId = materialId;
-	}
-	public String getMaterialDescription() {
-		return materialDescription;
-	}
-	public void setMaterialDescription(String materialDescription) {
-		this.materialDescription = materialDescription;
-	}
-	public Date getIssueDate() {
-		return issueDate;
-	}
-	public void setIssueDate(Date issueDate) {
-		this.issueDate = issueDate;
-	}
-	public Date getExpirationDate() {
-		return expirationDate;
-	}
-	public void setExpirationDate(Date expirationDate) {
-		this.expirationDate = expirationDate;
-	}
-	public String getCurrencyId() {
-		return currencyId;
-	}
-	public void setCurrencyId(String currencyId) {
-		this.currencyId = currencyId;
-	}
-	public String getCurrencyDescription() {
-		return currencyDescription;
-	}
-	public void setCurrencyDescription(String currencyDescription) {
-		this.currencyDescription = currencyDescription;
-	}
-	public double getAmount() {
-		return amount;
-	}
-	public void setAmount(double amount) {
-		this.amount = amount;
-	}
-	public String getDocumentClass() {
-		return documentClass;
-	}
-	public void setDocumentClass(String documentClass) {
-		this.documentClass = documentClass;
-	}
-	public int getFiscalYear() {
-		return fiscalYear;
-	}
-	public void setFiscalYear(int fiscalYear) {
-		this.fiscalYear = fiscalYear;
-	}
-	public double getAmountToPay() {
-		return amountToPay;
-	}
-	public void setAmountToPay(double amountToPay) {
-		this.amountToPay = amountToPay;
-	}
-	public String getPositionSap() {
-		return positionSap;
-	}
-	public void setPositionSap(String positionSap) {
-		this.positionSap = positionSap;
-	}
-	public String getSegment() {
-		return segment;
-	}
-	public void setSegment(String segment) {
-		this.segment = segment;
-	}	
+	public void setEstimatedDeathDate(Date estimatedDeathDate) {
+		this.estimatedDeathDate = estimatedDeathDate;
+	}		
 	
 }

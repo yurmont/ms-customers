@@ -24,7 +24,9 @@ DROP procedure IF EXISTS `customer_find_all`;
 DELIMITER //
 CREATE PROCEDURE customer_find_all()
 BEGIN
-   SELECT name,
+   SELECT 
+   		  customer_id AS customerId,
+   		  name,
 	      last_name AS lastName,
           birth_date AS birthDate
    FROM customer ;
