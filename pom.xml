@@ -26,7 +26,7 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring-cloud-config.version>1.4.2.RELEASE</spring-cloud-config.version>
-		<customers.version>1.0.0-SNAPSHOT</customers.version>
+		<tickets.version>1.0.0-SNAPSHOT</tickets.version>
 		<spring-cloud-aws.version>1.2.2.RELEASE</spring-cloud-aws.version>
 		<mysql.version>5.1.45</mysql.version>
 		<customers-microservice.version>0.0.1-SNAPSHOT</customers-microservice.version>
@@ -58,7 +58,20 @@
 				<artifactId>mysql-connector-java</artifactId>
 				<version>${mysql.version}</version>
 				<scope>runtime</scope>
-			</dependency>			
+			</dependency>
+
+			<dependency>
+				<groupId>com.h2database</groupId>
+				<artifactId>h2</artifactId>
+				<version>1.4.197</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi-ooxml</artifactId>
+				<version>3.17</version>
+			</dependency>
 
 		</dependencies>
 	</dependencyManagement>
@@ -133,7 +146,7 @@
 						</rules>
 					</rules>
 					<excludes>
-				        <exclude>**/customers/config/*</exclude>	
+				        <exclude>**/customers/config/*</exclude>
 				        <exclude>**/customers/dto/*</exclude>
 				    </excludes>
 				</configuration>
@@ -171,6 +184,31 @@
 					<createImage>true</createImage>
 					<scope>runtime</scope>
 				</configuration>
+			</plugin>
+
+			<plugin>
+			 <groupId>com.microsoft.azure</groupId>
+			 <artifactId>azure-webapp-maven-plugin</artifactId>
+			 <version>1.4.0</version>
+			 <configuration>
+			   <deploymentType>jar</deploymentType>
+			
+			   <!-- configure app to run on port 80, required by App Service -->
+			   <appSettings>
+			     <property> 
+			       <name>JAVA_OPTS</name> 
+			       <value>-Dserver.port=80</value> 
+			     </property> 
+			   </appSettings>
+			
+			   <!-- Web App information -->
+			   <resourceGroup>yurmont-rg</resourceGroup>
+			   <appName>customers-microservice</appName>
+			   <region>Central US</region>  
+			
+			   <!-- Java Runtime Stack for Web App on Linux-->
+			   <linuxRuntime>jre8</linuxRuntime>
+			 </configuration>
 			</plugin>
 
 		</plugins>

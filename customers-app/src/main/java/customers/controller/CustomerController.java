@@ -14,6 +14,7 @@ import customers.dto.CustomerCreateRequest;
 import customers.dto.CustomerKpiResponse;
 import customers.dto.CustomerResponse;
 import customers.service.CustomerService;
+import io.swagger.annotations.ApiOperation;
 
 import java.util.List;
 
@@ -26,7 +27,8 @@ public class CustomerController {
 	private CustomerService customerService;
 
 	@RequestMapping(method = RequestMethod.POST)
-	@ResponseStatus(value = HttpStatus.CREATED)
+	@ResponseStatus(value = HttpStatus.CREATED)	
+	@ApiOperation(value="Create a customer")
 	public ResponseEntity<Integer> create(@RequestBody CustomerCreateRequest request) {
 
 		Integer customerId = customerService.create(request);
@@ -35,6 +37,7 @@ public class CustomerController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/kpi")
+	@ApiOperation(value="Get customers KPIs")
 	public ResponseEntity<CustomerKpiResponse> getKpi() {
 
 		CustomerKpiResponse kpi = customerService.getKpi();
@@ -43,6 +46,7 @@ public class CustomerController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
+	@ApiOperation(value="Get all customers")
 	public ResponseEntity<List<CustomerResponse>> findAll() {
 
 		List<CustomerResponse> customers = customerService.findAll();
