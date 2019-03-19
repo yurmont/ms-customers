@@ -61,12 +61,6 @@ java -jar *-app/target/customs-app-*-SNAPSHOT.jar
 docker-compose -f */src/main/docker/docker-compose.yml up
 ```
 
-### Deployment
-
-```
-mvn azure-webapp:deploy
-```
-
 ## License
 
 Copyright @Yurmont All Rights Reserved - Proprietary and confidential
