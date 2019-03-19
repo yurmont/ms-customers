@@ -6,8 +6,8 @@
 local machine for development and testing purposes. 
 * Controllers, services and repositories have unit tests with 90% of test coverage.
 * The service was deployed to Amazon AWS and Azure.
-- http://customers-microservice.us-east-2.elasticbeanstalk.com/swagger-ui.html#/
-- https://customers-microservice.azurewebsites.net/swagger-ui.html#/
+  - http://customers-microservice.us-east-2.elasticbeanstalk.com/swagger-ui.html#/
+  - https://customers-microservice.azurewebsites.net/swagger-ui.html#/
 
 ## Prerequisites
 
