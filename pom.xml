@@ -28,7 +28,7 @@
 		<spring-cloud-config.version>1.4.2.RELEASE</spring-cloud-config.version>
 		<tickets.version>1.0.0-SNAPSHOT</tickets.version>
 		<spring-cloud-aws.version>1.2.2.RELEASE</spring-cloud-aws.version>
-		<mysql.version>5.1.45</mysql.version>
+		<mysql.version>8.0.16</mysql.version>
 		<customers-microservice.version>0.0.1-SNAPSHOT</customers-microservice.version>
 	</properties>
 
